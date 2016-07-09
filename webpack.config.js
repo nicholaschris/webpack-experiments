@@ -26,7 +26,22 @@ const common = {
         new HtmlWebpackPlugin({
             title: "Webpack Demo"
         })
-    ]
+    ],
+    module: {
+        preLoaders: [
+            {
+                test: /\.jsx?$/,
+                loaders: ['jshint'],
+                // define an include so we check just the files we need
+                include: PATHS.app
+            },
+            {
+              test: /\.jsx?$/,
+              loaders: ['eslint'],
+              include: PATHS.app
+            }
+        ]
+    }
 };
 
 var config;
